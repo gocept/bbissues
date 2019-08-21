@@ -42,7 +42,7 @@ setup(
     author='gocept <mail@gocept.com>',
     author_email='mail@gocept.com',
     license='ZPL 2.1',
-    url='https://bitbucket.org/gocept/gocept.bbissues/',
+    url='https://github.com/gocept/bbissues',
 
     keywords='',
     classifiers="""\

@@ -9,10 +9,10 @@ Developing gocept.bbissues
     https://pypi.python.org/pypi/gocept.bbissues
 
 :Issues:
-    https://bitbucket.org/gocept/gocept.bbissues/issues
+    https://github.com/gocept/bbissues/issues
 
 :Source code:
-    https://bitbucket.org/gocept/gocept.bbissues
+    https://github.com/gocept/bbissues
 
 :Current change log:
-    https://bitbucket.org/gocept/gocept.bbissues/raw/tip/CHANGES.rst
+    https://raw.githubusercontent.com/gocept/bbissues/master/CHANGES.rst
