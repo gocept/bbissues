@@ -7,62 +7,67 @@ TESTING_CONFIG = 'src/gocept/bbissues/tests/testing.cfg'
 
 DUMMY_PROJECTS = [{
     'name': 'gocept.amqprun',
-    'issues':
-  [{'status': u'new',  # noqa: E131
-    'priority': u'major',
-    'created': '2015-02-24 11:07',
-    'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/3',
-    'author': u'Michael Howitz',
-    'content':
-    u'Christian Stefanescu wrote:\r\n\r\n> Would it be possible to avoid making sudo calls in unit tests? For instance by adding the rabbit user over http?',  # noqa: E501
-    'comment_count': 0,
-    'type': 'Issue',
-    'title': u'Avoid sudo calls in tests.',
-    'prioclass': 'danger'},
-   {'status': u'new',
-    'priority': u'major',
-    'created': '2015-01-20 15:14',
-    'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/2',
-    'author': u'Michael Howitz',
-    'content':
-    u'Migrated from issue of @wosc at https://projects.gocept.com/issues/8218',
-    'comment_count': 0,
-    'type': 'Issue',
-    'title': u'Use vhosts for test isolation',
-    'prioclass': 'danger'},
-   {'status': u'new',
-    'priority': u'major',
-    'created': '2015-01-20 15:12',
-    'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/1',
-    'author': u'Michael Howitz',
-    'content':
-    u'migrated from https://projects.gocept.com/issues/10178 (Discussion of the issue see there.)\r\n\r\n@EnTeQuAk wrote (translated by @icemac):\r\n\r\nAMQP 0-8 is deprecated. Even though it is still supported it is no longer updated.  An update to 0-9-1 puts the package up to date as long there is no AMQP 1.0.\r\n\r\nInfos:\r\n\r\n* http://www.rabbitmq.com/amqp-0-8-to-0-9-1.html\r\n* http://www.rabbitmq.com/specification.html\r\n\r\nIn 0-9-1 many things are more strict and better defined thus easing the implementation.',  # noqa: E501
-    'comment_count': 5,
-    'title': u'AMQP 0-9-1',
-    'prioclass': 'danger'},
-   {'status': u'new',
-    'priority': u'major',
-    'created': '2016-04-25 10:18',
-    'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/7',
-    'author': u'Thomas Lotze',
-    'content':
-    u"Currently, it is not clearly readable how, when and why errors are handled and transactions are committed or aborted when a message handler is run. Responsibility for aborting transaction on errors and sending any error responses should be clearly given to the worker while the handlers should be concerned with creating messages only. To get rid of the responsibility of handling the set of response messages, two sets of response messages should be introduced that work similarly to stdout/stderr.\r\n\r\nThe logic would then be:\r\n\r\n* If an exception is raised by the handler, don't send any messages and abort the transaction (which causes a retry upon next channel switch).\r\n\r\n* If any error messages are returned, abort the transaction, then acknowledge the message and send the error messages (under a transaction that is then committed).\r\n\r\n* Otherwise, send any response messages and commit the transaction.\r\n\r\nThis would us allow to get rid of the IResponse interface and treat the different handlers in a more uniform way. Also, the session needs to be considered since it is currently responsible for acknowledging messages.",  # noqa: E501
-    'comment_count': 0,
-    'type': 'Issue',
-    'title': u'Clean up control flow and transaction handling',
-    'prioclass': 'danger'}],
-  'pullrequests':
-  [{'status': u'OPEN',
-    'priority': 'pullrequest',
-    'created': '2016-06-06 09:17',
-    'url': 'https://bitbucket.org/gocept/gocept.amqprun/pull-requests/1',
-    'author': u'Steffen Allner',
-    'content':
-    u'To speak the AMQP 0-9-1 we have essentially updated the underlying software library provided by rabbitmq (pika to 0.10.0). As a result we also need a new library for testing that speaks this version of AMQP (`amqp` instead of `amqplib`).\r\n\r\nMajor changes have been necessary to adapt to the new callback style synchronous programming pattern, including the ability to test it. We do not use `asyncore` as ioloop anymore, but `select` in general and `epoll` on linux machines instead. This should also ensure forward compatibility as `asyncore` is not supported anymore since pika 0.10.0.\r\n\r\nAs credentials, the port number of the RabbitMQ server can also be specified.',  # noqa: E501
-    'comment_count': 0,
-    'type': 'Issue',
-    'title': u'Use amqp 0-9-1',
-    'prioclass': 'primary'}]},
+    'issues': [{
+        'status': u'new',  # noqa: E131
+        'priority': u'major',
+        'created': '2015-02-24 11:07',
+        'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/3',
+        'author': u'Michael Howitz',
+        'content':
+        u'Christian Stefanescu wrote:\r\n\r\n> Would it be possible to avoid making sudo calls in unit tests? For instance by adding the rabbit user over http?',  # noqa: E501
+        'comment_count': 0,
+        'type': 'Issue',
+        'title': u'Avoid sudo calls in tests.',
+        'prioclass': 'danger'
+        }, {
+        'status': u'new',
+        'priority': u'major',
+        'created': '2015-01-20 15:14',
+        'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/2',
+        'author': u'Michael Howitz',
+        'content':
+        u'Migrated from issue of @wosc at https://projects.gocept.com/issues/8218',  # noqa: E501
+        'comment_count': 0,
+        'type': 'Issue',
+        'title': u'Use vhosts for test isolation',
+        'prioclass': 'danger'
+    }, {
+        'status': u'new',
+        'priority': u'major',
+        'created': '2015-01-20 15:12',
+        'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/1',
+        'author': u'Michael Howitz',
+        'content':
+        u'migrated from https://projects.gocept.com/issues/10178 (Discussion of the issue see there.)\r\n\r\n@EnTeQuAk wrote (translated by @icemac):\r\n\r\nAMQP 0-8 is deprecated. Even though it is still supported it is no longer updated.  An update to 0-9-1 puts the package up to date as long there is no AMQP 1.0.\r\n\r\nInfos:\r\n\r\n* http://www.rabbitmq.com/amqp-0-8-to-0-9-1.html\r\n* http://www.rabbitmq.com/specification.html\r\n\r\nIn 0-9-1 many things are more strict and better defined thus easing the implementation.',  # noqa: E501
+        'comment_count': 5,
+        'title': u'AMQP 0-9-1',
+        'prioclass': 'danger'
+    }, {
+        'status': u'new',
+        'priority': u'major',
+        'created': '2016-04-25 10:18',
+        'url': 'https://bitbucket.org/gocept/gocept.amqprun/issues/7',
+        'author': u'Thomas Lotze',
+        'content':
+        u"Currently, it is not clearly readable how, when and why errors are handled and transactions are committed or aborted when a message handler is run. Responsibility for aborting transaction on errors and sending any error responses should be clearly given to the worker while the handlers should be concerned with creating messages only. To get rid of the responsibility of handling the set of response messages, two sets of response messages should be introduced that work similarly to stdout/stderr.\r\n\r\nThe logic would then be:\r\n\r\n* If an exception is raised by the handler, don't send any messages and abort the transaction (which causes a retry upon next channel switch).\r\n\r\n* If any error messages are returned, abort the transaction, then acknowledge the message and send the error messages (under a transaction that is then committed).\r\n\r\n* Otherwise, send any response messages and commit the transaction.\r\n\r\nThis would us allow to get rid of the IResponse interface and treat the different handlers in a more uniform way. Also, the session needs to be considered since it is currently responsible for acknowledging messages.",  # noqa: E501
+        'comment_count': 0,
+        'type': 'Issue',
+        'title': u'Clean up control flow and transaction handling',
+        'prioclass': 'danger'
+    }],
+    'pullrequests': [{
+        'status': u'OPEN',
+        'priority': 'pullrequest',
+        'created': '2016-06-06 09:17',
+        'url': 'https://bitbucket.org/gocept/gocept.amqprun/pull-requests/1',
+        'author': u'Steffen Allner',
+        'content':
+        u'To speak the AMQP 0-9-1 we have essentially updated the underlying software library provided by rabbitmq (pika to 0.10.0). As a result we also need a new library for testing that speaks this version of AMQP (`amqp` instead of `amqplib`).\r\n\r\nMajor changes have been necessary to adapt to the new callback style synchronous programming pattern, including the ability to test it. We do not use `asyncore` as ioloop anymore, but `select` in general and `epoll` on linux machines instead. This should also ensure forward compatibility as `asyncore` is not supported anymore since pika 0.10.0.\r\n\r\nAs credentials, the port number of the RabbitMQ server can also be specified.',  # noqa: E501
+        'comment_count': 0,
+        'type': 'Issue',
+        'title': u'Use amqp 0-9-1',
+        'prioclass': 'primary'
+    }]},
  {'name': 'gocept.selenium',
   'issues':
   [{'status': u'new',
